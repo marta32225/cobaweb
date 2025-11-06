@@ -116,7 +116,6 @@
         return response.json();
     })
     .then(data => {
-        console.log(data.dbaw);
         createData(data.dbaw);
         //const jsonString = JSON.stringify(data, null, 2); // Format dengan indentasi 2 spasi
         //document.getElementById('jsonData').textContent = jsonString;
