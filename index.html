@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JSON dari GitHub</title>
+    <script src="assets/js/script.js"></script>
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/bootstrap/bootstrap.min.css">
+</head>
+<body>
+    <div class="bg-primary" id="Header">
+      <h1 class="p-5 text-center">Pemrograman Berbasis Web 1</h1>
+      <nav class="navbar navbar-expand-lg bg-info p-1" style="width:100%">
+	    <div class="container-fluid">
+	      <a class="navbar-brand navbar-link m-0 px-4" href="#" style="text-align: center; color: black;">PBW1</a>
+	      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+	        <span class="navbar-toggler-icon"></span>
+	      </button>
+	      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+	        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+	          <li class="navbar-link nav-item">
+	            <a class="nav-link active" aria-current="page" href="#" style="width: 100%;text-align: center; color: black;">Home</a>
+	          </li>
+	          <li class="navbar-link nav-item">
+	            <a class="nav-link active" aria-current="page" href="#" style="width: 100%;text-align: center; color: black;">About</a>
+	          </li>
+	          <li class="navbar-link nav-item">
+	            <a class="nav-link active" aria-current="page" href="#" style="width: 100%;text-align: center; color: black;">ContactUS</a>
+	          </li>
+	        </ul>
+	        <form class="d-flex" role="search" style="width: 100%; color: black;">
+	          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
+	          <button class="btn btn-outline-info" type="submit" id="tSearch" style="color: black;"
+	              onMouseOver="handleMouseEnter"
+	              onMouseOut="handleMouseLeave">Search</button>
+	        </form>
+	      </div>
+	    </div>
+	  </nav>
+    </div>
+    <div id="Konten">
+    <h1>Data dari File JSON GitHub</h1>
+    <pre id="jsonData"></pre>
+      <h1>Daftar Data</h1>
+      <table class="table bordered">
+        <thead>
+          <tr>
+            <th>No</th>
+            <th>Nama Data</th>
+            <th>Link</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1</td>
+            <td>Data Produk</td>
+            <td><a href="#" class="btn btn-primary">Link</a></td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td>Data Address Mahasiswa</td>
+            <td><a href="daftarAW.html" class="btn btn-primary">Link</a></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="d-flex align-items-center justify-content-center" id="Footer">
+      <h4 class="text-center m-0 p-3">Semester Genap Tahun Ajaran 2024-2025</h4>
+    </div>
+</body>
+</html>
+
+<script type="text/javascript">
+	// Dapatkan elemen tombol
+	const myButton = document.getElementById('tSearch');
+
+	// Ubah warna latar belakang saat mouse diarahkan ke tombol
+	myButton.onmouseover = function() {
+	  myButton.style.backgroundColor = '#0d6efd';
+	};
+
+	// Ubah warna latar belakang kembali saat mouse keluar dari tombol
+	myButton.onmouseout = function() {
+	  myButton.style.backgroundColor = '#0dcaf0'; // Ganti dengan warna default Anda
+	};
+</script>
