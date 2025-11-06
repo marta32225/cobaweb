@@ -41,59 +41,39 @@
     </div>
     <!-- Header -->
     <!-- Konten -->
-    <div id="Konten">
-      <h1>Data Mahasiswa</h1>
-      <a
-        href="formIAW.html"
-        style="width: 220px;"
-        class="btn btn-primary m-1"
-      >
-        Tambah Data
-      </a>
-      <a
-        href="index.html"
-        style="width: 220px;"
-        class="btn btn-primary m-1"
-      >
-        Kembali
-      </a>
-      <table class="table bordered">
-        <thead>
+    <div id="formIP">
+      <h1>Input Data Mahasiswa</h1>
+      <form onsubmit="addMhs()" method="POST">
+        <table>
           <tr>
-            <th>No</th>
-            <th>NIM</th>
-            <th>Nama</th>
-            <th>Kelas</th>
-            <th>Address</th>
-            <th>Aksi</th>
+            <th><label for="nim">NIM</label></th>
+            <td>:</td>
+            <td><input type="text" name="nim" id="nim" placeholder="Input NIM Mahasiswa" style="justify-items: left "></th>
           </tr>
-        </thead>
-        <tbody>
-            <tr>
-              <td id="no"></td>
-              <td id="nim"></td>
-              <td id="nama"></td>
-              <td id="kelas"></td>
-              <td id="address"></td>
-              <td colSpan="2">
-                <a
-                  href="#"
-                  style="width: 100px;"
-                  class="btn btn-primary m-1"
-                >
-                  Edit
-                </a>
-                <a
-                  href="#"
-                  style="width: 100px;"
-                  class="btn btn-primary m-1"
-                >
-                  Hapus
-                </a>
-              </td>
-            </tr>
+          <tr>
+            <th><label for="nama">Nama</label></th>
+            <td>:</td>
+            <td><input type="text" name="nama" id="nama" placeholder="Input Nama Mahasiswa" style="justify-items: left "></th>
+          </tr>
+          <tr>
+            <th><label for="kelas">Kelas</label></th>
+            <td>:</td>
+            <td><input type="text" name="kelas" id="kelas" placeholder="Input Kelas Mahasiswa" style="justify-items: left "></th>
+          </tr>
+          <tr>
+            <th><label for="address">Web Address</label></th>
+            <td>:</td>
+            <td><input type="text" name="address" id="address" placeholder="Input Web Address Mahasiswa" style="justify-items: left "></th>
+          </tr>
+          <tr>
+            <td colspan=3>
+              <input type="submit" name="submit" id="submit" value="Simpan" class="btn btn-primary" style="width: 147px">
+              <a href="daftarAW.html" class="btn btn-primary" style="width: 147px">Kembali</a>
+            </td>
+          </tr>
         </tbody>
       </Table>
+      </form>
     </div>
     <!-- Konten -->
     <!-- Footer -->
@@ -105,39 +85,33 @@
 </html>
 
 <script type="text/javascript">
-  // script tampil data
-  const githubJsonUrl = 'https://raw.githubusercontent.com/marta32225/webdata/refs/heads/master/db.json'; // Ganti dengan URL raw dari GitHub
+  // script simpan data
+  var nim = document.getElementById("nim").value;
+  var nama = document.getElementById("nama").value;
+  var kelas = document.getElementById("kelas").value;
+  var address = document.getElementById("address").value;
+  // fungsi untuk menambah data produk melalui API ketika tombol "Add" di klik
+  function addMhs () {
+    const newMhs = {nim,nama,kelas,address}
 
-  fetch(githubJsonUrl)
-    .then(response => {
-        if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        return response.json();
-    })
-    .then(data => {
-        console.log(data.dbaw);
-        createData(data.dbaw);
-        //const jsonString = JSON.stringify(data, null, 2); // Format dengan indentasi 2 spasi
-        //document.getElementById('jsonData').textContent = jsonString;
-    })
+    fetch('https://raw.githubusercontent.com/marta32225/webdata/refs/heads/master/db.json', {
+            method: 'POST',
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(newMhs)
+        }).then(() => {
+      // ketika sukses menambah data, reset form dengan mengeset state produk menjadi empty string 
+            console.log('new mahasiswa added.')
+            window.location.href = "daftarAW.html";
+        })
     .catch(error => {
         console.error('Gagal memuat data JSON:', error);
         document.getElementById('jsonData').textContent = 'Gagal memuat data.';
     }
 );
-
-function createData(argument) {
-    // body...
-    for (var i = 0; i < argument.length; i++) {
-        document.getElementById("no").innerHTML = i+1;
-        document.getElementById("nim").innerHTML = argument[i].nim;
-        document.getElementById("nama").innerHTML = argument[i].nama;
-        document.getElementById("kelas").innerHTML = argument[i].kelas;
-        document.getElementById("address").innerHTML = '<a href="' + argument[i].address + '"  class="btn btn-primary">Link</a>';
-    }
-}
-  // script tampil data 
+  }
+  // script simpan data 
 
   // Tombol Search
 	// Dapatkan elemen tombol

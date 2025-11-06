@@ -1,6 +1,7 @@
 const githubJsonUrl = 'https://raw.githubusercontent.com/marta32225/webdata/refs/heads/master/db.json'; // Ganti dengan URL raw dari GitHub
 
-fetch(githubJsonUrl)
+const showData = async () => {
+await fetch(githubJsonUrl)
     .then(response => {
         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
@@ -18,6 +19,8 @@ fetch(githubJsonUrl)
         document.getElementById('jsonData').textContent = 'Gagal memuat data.';
     }
 );
+};
+showData();
 
 function createData(argument) {
     // body...
