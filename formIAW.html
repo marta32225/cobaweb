@@ -89,12 +89,12 @@
 
 
 
+  // fungsi untuk menambah data produk melalui API ketika tombol "Add" di klik
+  function addMhs () {
   var nim = document.getElementById("nim").value;
   var nama = document.getElementById("nama").value;
   var kelas = document.getElementById("kelas").value;
   var address = document.getElementById("address").value;
-  // fungsi untuk menambah data produk melalui API ketika tombol "Add" di klik
-  function addMhs () {
     const newMhs = {nim,nama,kelas,address}
 
     fetch('https://raw.githubusercontent.com/marta32225/webdata/refs/heads/master/db.json', {
