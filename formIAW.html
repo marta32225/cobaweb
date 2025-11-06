@@ -98,7 +98,7 @@ xhr.onload = function() {
 };
 xhr.send();
 
-  
+
   var nim = document.getElementById("nim").value;
   var nama = document.getElementById("nama").value;
   var kelas = document.getElementById("kelas").value;
@@ -116,7 +116,6 @@ xhr.send();
         }).then(() => {
       // ketika sukses menambah data, reset form dengan mengeset state produk menjadi empty string 
             console.log('new mahasiswa added.')
-            window.location.href = "daftarAW.html";
         })
     .catch(error => {
         console.error('Gagal memuat data JSON:', error);
