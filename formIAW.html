@@ -86,6 +86,19 @@
 
 <script type="text/javascript">
   // script simpan data
+  let xhr = new XMLHttpRequest();
+xhr.open('GET', 'https://raw.githubusercontent.com/marta32225/webdata/refs/heads/master/db.json', true);
+xhr.responseType = 'json'; // Atur agar respons otomatis di-parse sebagai JSON
+xhr.onload = function() {
+  if (xhr.status === 200) {
+    console.log(xhr.response); // Menampilkan data objek
+  } else {
+    console.error('Error:', xhr.status);
+  }
+};
+xhr.send();
+
+  
   var nim = document.getElementById("nim").value;
   var nama = document.getElementById("nama").value;
   var kelas = document.getElementById("kelas").value;
